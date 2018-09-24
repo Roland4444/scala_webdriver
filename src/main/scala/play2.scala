@@ -4,8 +4,7 @@ import org.openqa.selenium.{By, JavascriptExecutor, WebDriver}
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.support.ui.ExpectedCondition
 import org.openqa.selenium.support.ui.WebDriverWait
-import play.driver
-
+//https://google.com
 import scala.runtime.Nothing$
 object play2 extends App  {
 
@@ -24,7 +23,8 @@ object play2 extends App  {
   println("elem3===>>>>" + element3.getText)
   val element = driver findElementByXPath("//*[text()='Big Head!']")
   println("size==>"+element.getSize)
-
+  val link = driver findElementByXPath ("//a[@href='https://google.com']")
+  link click()
   //Постановление суда апелляционной инстанции
   // Now submit the form. WebDriver will find the form for us from the element
   //element.submit()
