@@ -1,37 +1,20 @@
 import java.io.PrintWriter
-
-import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.firefox.FirefoxDriver
 object play extends App {
-
-  import org.openqa.selenium.WebDriver
-  import org.openqa.selenium.firefox.FirefoxDriver
-  import org.openqa.selenium.firefox.FirefoxProfile
-
-  import org.openqa.selenium.firefox.FirefoxProfile
-  import org.openqa.selenium.remote.CapabilityType
-  import org.openqa.selenium.remote.DesiredCapabilities
-
-  import org.openqa.selenium.WebDriver
-  import org.openqa.selenium.chrome.ChromeDriver
-  import org.openqa.selenium.chrome.ChromeOptions
-
   val option = new ChromeOptions
   option.addArguments("--proxy-server=http://" + "35.199.96.12")
-  val driver = new ChromeDriver(option)
-
-
+  val driver = new FirefoxDriver()
   driver get ("https://ras.arbitr.ru/")
   val input = driver findElementsByClassName("g-ph")
   val type_ = driver findElementByClassName("g-ph")
   val typeEnter = input.get(1).sendKeys("о несостоятельности (банкротстве) организаций и граждан")
-  //Thread sleep(5000)
   val inputINN = input.get(3).sendKeys("3015011755")
-  //Thread sleep(5000)
   val element = driver findElementByXPath ("//*[text()='Найти']")
   element click;
-  //Thread sleep(5000)
+  Thread sleep(5000)
   if (driver.isInstanceOf[JavascriptExecutor]){}
     driver.asInstanceOf[JavascriptExecutor].executeScript("var z1, A1=document.querySelectorAll(\".doc-text\"); for (z1=0; z1<A1.length; z1++) {\n  var div = document.createElement('a');\n  div.className = \"info\";\n  div.href = A1[z1].querySelectorAll(\"A\")[0].href;\n  div.innerText = A1[z1].parentNode.innerText;\n  document.body.insertBefore(div, document.body.firstChild);\n}")
   val elems = driver findElementsByClassName("info")
@@ -45,5 +28,5 @@ object play extends App {
     outs.println("\n\n")
   }
   outs.close
- // driver close
+  //driver close
 }
