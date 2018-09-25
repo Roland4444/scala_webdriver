@@ -1,5 +1,6 @@
 import java.io.{BufferedOutputStream, File, FileOutputStream}
 
+import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.{By, JavascriptExecutor, WebDriver}
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.support.ui.ExpectedCondition
@@ -10,7 +11,7 @@ object play2 extends App  {
 
   val init = new File("initial,html")
   val ended = new File("ended,html")
-  val driver = new FirefoxDriver
+  val driver = new ChromeDriver
   driver get("http://127.0.0.1:9000/test")
   val bos = new BufferedOutputStream(new FileOutputStream(init))
   val bos_end = new BufferedOutputStream(new FileOutputStream(ended))
@@ -24,7 +25,7 @@ object play2 extends App  {
   val element = driver findElementByXPath("//*[text()='Big Head!']")
   println("size==>"+element.getSize)
   val link = driver findElementByXPath ("//a[@href='https://google.com']")
-  link click()
+
   //Постановление суда апелляционной инстанции
   // Now submit the form. WebDriver will find the form for us from the element
   //element.submit()

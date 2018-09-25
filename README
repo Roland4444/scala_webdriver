@@ -6,3 +6,10 @@ PARSE USING JS DOM;;
 append in html data;
 
 parse using Webdriver!
+
+RoadMap=> Parse one JS;
+           Add Using JS Scala;
+           Get Data From created Tag;
+
+
+           Source =>  https://learn.javascript.ru/modifying-document
