@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver
 object play extends App {
   val option = new ChromeOptions
   option.addArguments("--proxy-server=http://" + "35.199.96.12")
-  val driver = new FirefoxDriver()
+  val driver = new ChromeDriver(option)
   driver get ("https://ras.arbitr.ru/")
   val input = driver findElementsByClassName("g-ph")
   val type_ = driver findElementByClassName("g-ph")
@@ -28,5 +28,5 @@ object play extends App {
     outs.println("\n\n")
   }
   outs.close
-  //driver close
+  driver close
 }
