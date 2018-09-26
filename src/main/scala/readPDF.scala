@@ -1,5 +1,6 @@
 import java.awt.Rectangle
-import java.io.File
+import java.io.{BufferedOutputStream, File, FileOutputStream, OutputStream}
+import org.apache.pdfbox.text.PDFTextStripper
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.text.PDFTextStripperByArea
 class readPDF {
@@ -12,6 +13,11 @@ class readPDF {
 		val firstPage = document.getPage(0);
     stripper.extractRegions( firstPage );
 		stripper.getTextForRegion( "class1" )
+  }
+
+  def readPDFAll(fileName: String): String={
+    val pdd = PDDocument.load(new File(fileName))
+    new PDFTextStripper().getText(pdd)
   }
 
 	def readPDF(fileName: String, x: Integer, y: Integer, width: Integer, height: Integer): String={
