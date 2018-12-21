@@ -33,4 +33,11 @@ public class readPDFTest {
         assertNotEquals("текст\n", r.readPDFAll("McLaren 570S Spider Brochure.pdf"));
         System.out.println(r.readPDFAll("McLaren 570S Spider Brochure.pdf"));
     }
+
+    @Test
+    public void rtupidCBR() {
+        readPDF r = new readPDF();
+        assertNotEquals("текст\n", r.readPDFAll("/home/roland/Downloads/4859_U_06082018.pdf"));
+        System.out.println(r.readPDFAll("/home/roland/Downloads/4859_U_06082018.pdf"));
+    }
 }

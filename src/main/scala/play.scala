@@ -1,11 +1,13 @@
 import java.io.PrintWriter
+
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.JavascriptExecutor
-import org.openqa.selenium.firefox.FirefoxDriver
+import play.driver
 object play extends App {
+
   val option = new ChromeOptions
-  option.addArguments("--proxy-server=http://" + "35.199.96.12")
+  option.addArguments("--proxy-server=http://" + "217.160.0.175 ")
   val driver = new ChromeDriver(option)
   driver get ("https://ras.arbitr.ru/")
   val input = driver findElementsByClassName("g-ph")
@@ -29,4 +31,19 @@ object play extends App {
   }
   outs.close
   //driver close
+}
+
+
+
+//https://fias.nalog.ru/ExtendedSearchPage.aspx
+
+
+object play3 extends App {
+
+
+  val driver = new ChromeDriver()
+  driver get ("https://fias.nalog.ru/ExtendedSearchPage.aspx")
+  val input = driver.findElementById("ctl00_contentPlaceHolder_kladrAddressObjectControl_addressObjectMultiViewControl_addressObjectMOControl_areaMORadComboBox_Arrow")
+  val element = driver findElementByXPath ("//*[text()='Административно-территориальное']")
+  element click
 }
