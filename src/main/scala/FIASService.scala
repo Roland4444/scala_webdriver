@@ -15,17 +15,18 @@ class FIASService extends JAktor {
     val resp = new FIASResult
     resp.ID = inputMsg.ID
     try
-      resp.Result = letstrygetFIAS(inputMsg.AddressGeographical)
+      resp.Result = trygetFIAS(inputMsg.AddressGeographical)
     catch {
       case e: InterruptedException =>
         e.printStackTrace()
     }
     send(BinaryMessage.savedToBLOB(resp), inputMsg.AddressToReply)
-    System.out.println(" => SEND complete")
+
+    System.out.println(resp.Result+ " => SEND complete")
   }
 
 
-  def letstrygetFIAS(address: String): String = {
+  def trygetFIAS(address: String): String = {
     val driver = new ChromeDriver()
     driver get ("https://dadata.ru/suggestions/#address")
     val input = driver findElementById("address-input")
@@ -37,11 +38,9 @@ class FIASService extends JAktor {
     if (driver.isInstanceOf[JavascriptExecutor])
       driver.asInstanceOf[JavascriptExecutor].executeScript(script)
     val elems = driver findElementByClassName("dumpinfo")
-    var Result = Ext.extractTagValue(elems.getText, "td data-ref=\"fias-codes\"")
+    var Result = elems.getText
     driver close()
-    if (Result != null)
-      Result
-    ""
+    Result
   }
 }
 
@@ -65,5 +64,5 @@ object Run extends App{
     driver.asInstanceOf[JavascriptExecutor].executeScript(script)
   val elems = driver findElementByClassName("dumpinfo")
   println(  Ext.extractTagValue(elems.getText, "td data-ref=\"fias-codes\""))
-  driver close()
+  //driver close()
 }
