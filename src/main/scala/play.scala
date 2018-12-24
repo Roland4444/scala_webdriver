@@ -39,11 +39,15 @@ object play extends App {
 
 
 object play3 extends App {
-
-
   val driver = new ChromeDriver()
   driver get ("https://fias.nalog.ru/ExtendedSearchPage.aspx")
   val input = driver.findElementById("ctl00_contentPlaceHolder_kladrAddressObjectControl_addressObjectMultiViewControl_addressObjectMOControl_areaMORadComboBox_Arrow")
   val element = driver findElementByXPath ("//*[text()='Административно-территориальное']")
-  element click
+  element click()
+  Thread.sleep(2000)
+  val element2 = driver findElementById("ctl00_contentPlaceHolder_kladrAddressObjectControl_addressObjectMultiViewControl_addressObjectControl_regionRadComboBox_Arrow")
+  element2 click()
+  Thread.sleep(2000)
+  val element3 = driver findElementByPartialLinkText("Астраханская область")
+  element3 click()
 }
